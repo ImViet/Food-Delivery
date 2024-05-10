@@ -1,44 +1,62 @@
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
-import { useState } from "react";
-const Navbar = () => {
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { StoreContext } from "../../context/StoreContext";
+const Navbar = (props) => {
   const [menu, setMenu] = useState("Home");
+  const { setShowLogin } = props;
+  const { getTotalQuantity } = useContext(StoreContext);
   return (
     <div className="navbar">
-      <img src={assets.logo} className="navbar-logo" />
+      <Link to="/">
+        <img src={assets.logo} className="navbar-logo" />
+      </Link>
       <ul className="navbar-menu">
-        <li
+        <Link
+          to="/"
           className={menu === "Home" ? "active" : ""}
           onClick={() => setMenu("Home")}
         >
           Home
-        </li>
-        <li
+        </Link>
+        <a
+          href="#explore-menu"
           className={menu === "Menu" ? "active" : ""}
           onClick={() => setMenu("Menu")}
         >
           Menu
-        </li>
-        <li
+        </a>
+        <a
+          href="#app-download"
           className={menu === "Mobile" ? "active" : ""}
           onClick={() => setMenu("Mobile")}
         >
           Mobile-app
-        </li>
-        <li
+        </a>
+        <a
+          href="#footer"
           className={menu === "ContactUs" ? "active" : ""}
           onClick={() => setMenu("ContactUs")}
         >
           Contact us
-        </li>
+        </a>
       </ul>
       <div className="navbar-right">
         <img src={assets.search_icon} alt="" />
         <div className="navbar-cart">
-          <img src={assets.basket_icon} alt="" />
-          <div className="dot"></div>
+          <Link to="/cart" onClick={() => setMenu("Cart")}>
+            <img src={assets.basket_icon} alt="" />
+          </Link>
+          <div className={getTotalQuantity() === 0 ? "" : "dot"}>
+            {getTotalQuantity() === 0 ? (
+              <></>
+            ) : (
+              <span>{getTotalQuantity()}</span>
+            )}
+          </div>
         </div>
-        <button>Sign In</button>
+        <button onClick={() => setShowLogin(true)}>Sign In</button>
       </div>
     </div>
   );

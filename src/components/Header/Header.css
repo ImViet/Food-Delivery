@@ -2,6 +2,7 @@
   height: 34vw;
   margin: 30px auto;
   background-image: url("../../assets/header_img.png");
+  background-repeat: no-repeat;
   background-size: contain;
   position: relative;
 }
@@ -15,6 +16,7 @@
   max-width: 50%;
   bottom: 10%;
   left: 6vw;
+  animation: fadeIn 2s;
 }
 
 .header-contents h2 {
@@ -26,4 +28,33 @@
 .header-contents p {
   color: #fff;
   font-size: 1vw;
+}
+
+.header-contents button {
+  border: none;
+  color: #747474;
+  background-color: #fff;
+  padding: 10px 15px;
+  border-radius: 50px;
+  border: nonw;
+  font-weight: 500;
+  font-size: max(1vw, 13px);
+  cursor: pointer;
+}
+
+@media (max-width: 1050px) {
+  .header-contents {
+    max-width: 45%;
+  }
+}
+@media (max-width: 750px) {
+  .header-contents {
+    max-width: 55%;
+  }
+  .header-contents p {
+    display: none;
+  }
+  .header-contents button {
+    padding: 8px 10px;
+  }
 }
