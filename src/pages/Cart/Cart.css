@@ -27,6 +27,7 @@
 .quantity img {
   width: 24px;
   margin: 5px;
+  cursor: pointer;
 }
 .cart hr {
   height: 1px;
