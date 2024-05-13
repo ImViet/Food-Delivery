@@ -9,6 +9,7 @@ const Cart = () => {
     food_list,
     addToCart,
     removeFromCart,
+    deleteItem,
     getTotalCartAmount,
   } = useContext(StoreContext);
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ const Cart = () => {
                       </p>
                       <p>{item.price * cartItems[item._id]}</p>
                       <p
-                        onClick={() => removeFromCart(item._id)}
+                        onClick={() => deleteItem(item._id)}
                         className="remove"
                       >
                         X

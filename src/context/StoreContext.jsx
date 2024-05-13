@@ -21,6 +21,11 @@ const StoreContextProvider = (props) => {
       setCartItems(cart);
     }
   };
+  const deleteItem = (itemId) => {
+    var cart = { ...cartItems };
+    delete cart[itemId];
+    setCartItems(cart);
+  };
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {
@@ -42,6 +47,7 @@ const StoreContextProvider = (props) => {
     setCartItems,
     addToCart,
     removeFromCart,
+    deleteItem,
     getTotalCartAmount,
     getTotalQuantity,
   };
