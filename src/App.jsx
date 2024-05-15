@@ -6,6 +6,7 @@ import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import Footer from "./components/Footer/Footer";
 import { useEffect, useState } from "react";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
+import GoToTop from "./components/GoToTop/GoToTop";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/order" element={<PlaceOrder />}></Route>
         </Routes>
       </div>
+      <GoToTop />
       <Footer></Footer>
     </>
   );
