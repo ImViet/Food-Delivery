@@ -11,11 +11,19 @@ import GoToTop from "./components/GoToTop/GoToTop";
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
   useEffect(() => {
-    if (showLogin) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    // if (showLogin) {
+    //   document.body.style.overflow = "hidden";
+    // } else {
+    //   document.body.style.overflow = "unset";
+    // }
+    window.addEventListener("scroll", () => {
+      const navbar = document.getElementById("navbar");
+      if(window.scrollY > 50){
+        navbar.classList.add("navbar-scroll");
+      }else{
+        navbar.classList.remove("navbar-scroll");
+      }
+    })
   }, [showLogin]);
   return (
     <>

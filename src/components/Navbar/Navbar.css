@@ -1,8 +1,27 @@
 .navbar {
-  padding: 20px 0;
+  padding: 15px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.3s ease;
+}
+
+.navbar-scroll {
+  position: sticky;
+  background-color: #fff;
+  z-index: 2;
+  top: 0;
+  animation: fadeIn 1s;
+  padding: 10px 0;
+}
+
+.navbar-scroll::after{
+  content: '';
+  border-bottom: inset tomato 1px;
+  opacity: 0.5;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
 .navbar-logo {

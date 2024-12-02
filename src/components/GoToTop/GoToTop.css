@@ -1,16 +1,18 @@
 .button-top-container {
   position: relative;
 }
+
 .button-top-container img {
   border: 1px solid tomato;
   font-size: 10px;
   border-radius: 50%;
-  width: max(3vw, 30px);
-  height: max(3vw, 30px);
+  width: max(2vw, 20px);
+  height: max(2vw, 20px);
   position: fixed;
   z-index: 20;
   right: 10px;
   bottom: 45px;
   cursor: pointer;
-  animation: fadeIn 1s;
+  animation: opacity 1s;
+  padding: 10px;
 }

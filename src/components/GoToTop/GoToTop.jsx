@@ -22,7 +22,9 @@ const GoToTop = () => {
     <>
       {showTopBtn ? (
         <div className="button-top-container">
-          <img src={assets.arrow_top} alt="" onClick={goToTop} />
+          <button className="back-to-top">
+            <img src={assets.arrow_top} alt="" onClick={goToTop} />
+          </button>
         </div>
       ) : (
         <></>

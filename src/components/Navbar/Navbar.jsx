@@ -8,7 +8,7 @@ const Navbar = (props) => {
   const { setShowLogin } = props;
   const { getTotalQuantity } = useContext(StoreContext);
   return (
-    <div className="navbar">
+    <div className="navbar" id="navbar">
       <Link to="/">
         <img src={assets.logo} className="navbar-logo" />
       </Link>
