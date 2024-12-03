@@ -1,9 +1,51 @@
 import React, { useEffect, useState } from "react";
 import { assets } from "../../assets/assets";
+import { users } from "../../assets/data";
 import "./LoginPopup.css";
+import toast from "react-hot-toast";
 const LoginPopup = (props) => {
   const [currentState, setCurrentState] = useState("Login");
   const { setShowLogin } = props;
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const signup = () => {
+    users.push(user);
+    setCurrentState("Login");
+  };
+  const login = () => {
+    if (!validateLogin()) {
+      toast.error("Email or password is empty");
+      return;
+    }
+    var getUser = users.find(
+      (u) => u.email === user.email && u.password === user.password
+    );
+    if (!getUser) {
+      toast.error("Email or password is not correct");
+      return;
+    }
+    toast.success("Login success");
+    setShowLogin(false);
+  };
+  const validateLogin = () => {
+    var isValid = true;
+    if (
+      !user.email ||
+      user.email === "" ||
+      !user.password ||
+      user.password === ""
+    ) {
+      isValid = false;
+    }
+    return isValid;
+  };
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setUser((prev) => ({ ...prev, [name]: value }));
+  };
   return (
     <div className="login-popup">
       <form className="login-popup-container" action="">
@@ -17,17 +59,42 @@ const LoginPopup = (props) => {
         </div>
         <div className="login-popup-inputs">
           {currentState === "Sign Up" ? (
-            <input type="text" placeholder="Your name" required />
+            <input
+              type="text"
+              name="name"
+              onChange={handleOnChange}
+              placeholder="Your name"
+              required
+            />
           ) : (
             <></>
           )}
 
-          <input type="email" placeholder="Your email" required />
-          <input type="password" placeholder="Your password" required />
+          <input
+            type="email"
+            name="email"
+            onChange={handleOnChange}
+            placeholder="Your email"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            onChange={handleOnChange}
+            placeholder="Your password"
+            required
+          />
         </div>
-        <button>
-          {currentState === "Sign Up" ? "Create account" : "Login"}
-        </button>
+        {currentState === "Sign Up" ? (
+          <button type="button" onClick={signup}>
+            Create account
+          </button>
+        ) : (
+          <button type="button" onClick={login}>
+            Login
+          </button>
+        )}
+
         <div className="login-popup-condition">
           <input type="checkbox" required />
           <p>By continuing, I agree to the terms of use & privacy policy.</p>
