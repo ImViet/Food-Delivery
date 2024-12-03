@@ -7,23 +7,18 @@ import Footer from "./components/Footer/Footer";
 import { useEffect, useState } from "react";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 import GoToTop from "./components/GoToTop/GoToTop";
-
+import { Toaster } from "react-hot-toast";
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
   useEffect(() => {
-    // if (showLogin) {
-    //   document.body.style.overflow = "hidden";
-    // } else {
-    //   document.body.style.overflow = "unset";
-    // }
     window.addEventListener("scroll", () => {
       const navbar = document.getElementById("navbar");
-      if(window.scrollY > 50){
+      if (window.scrollY > 50) {
         navbar.classList.add("navbar-scroll");
-      }else{
+      } else {
         navbar.classList.remove("navbar-scroll");
       }
-    })
+    });
   }, [showLogin]);
   return (
     <>
@@ -38,6 +33,7 @@ const App = () => {
       </div>
       <GoToTop />
       <Footer></Footer>
+      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 };
